@@ -49,7 +49,6 @@ def score_game(random_predict) -> int:
     random_array = np.random.randint(1, 101, size=(1000))  # загадали список чисел
 
     for number in random_array:
-        print("Попытка № ",number)
         count_ls.append(random_predict(number))
 
     score = int(np.mean(count_ls))
