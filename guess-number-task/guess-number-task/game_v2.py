@@ -14,23 +14,19 @@ def random_predict(number: int = 1) -> int:
     Returns:
         int: Число попыток
     """
-    count = 0
-    lower_bound = 1
-    upper_bound = 100
-    next_step = 0
+    count = 0 # счетчик попыток
+    lower_bound = 1 # нижняя граница поиска
+    upper_bound = 100 # верхняя граница поиска
 
     while True:
         count += 1
-        predict_number = lower_bound + next_step if upper_bound - lower_bound == 1 else int((lower_bound + upper_bound) / 2) # предполагаемое число
-
+        predict_number = int((lower_bound + upper_bound) / 2) # предполагаемое число
         if number == predict_number:
             break  # выход из цикла если угадали
-        elif number > predict_number:
-            lower_bound = predict_number
-            next_step = 1
-        else:
-            upper_bound = predict_number
-            next_step = 0
+        elif number > predict_number: # если загаданное число больше, то устанавливаем новую нижнюю границу
+            lower_bound = predict_number + 1
+        else: # если загаданное число меньше, то устанавливаем новую верхнюю границу
+            upper_bound = predict_number - 1
 
     return count
 
